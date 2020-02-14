@@ -1,4 +1,4 @@
-package Lesson7.Course;
+package Lesson7.Course.reflection;
 
 public abstract class Monkey {
     private  String  name;

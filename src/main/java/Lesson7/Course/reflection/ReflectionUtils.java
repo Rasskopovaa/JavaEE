@@ -1,4 +1,4 @@
-package Lesson7.Course;
+package Lesson7.Course.reflection;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

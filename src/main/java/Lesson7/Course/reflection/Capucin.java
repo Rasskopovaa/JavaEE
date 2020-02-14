@@ -1,6 +1,4 @@
-package Lesson7.Course;
-
-import Lesson7.Course.Monkey;
+package Lesson7.Course.reflection;
 
 public class Capucin extends Monkey {
     public int charming;
