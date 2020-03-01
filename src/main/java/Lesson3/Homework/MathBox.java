@@ -5,7 +5,7 @@ import java.util.*;
 public class MathBox {
 
 
-    private ArrayList<Integer> arrayList;
+    public ArrayList<Integer> arrayList;
 
 
     public MathBox(Integer[] array) {
