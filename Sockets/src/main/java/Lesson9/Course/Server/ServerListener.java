@@ -1,0 +1,25 @@
+package Lesson9.Course.Server;
+
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class ServerListener extends Thread {
+    @Override
+    public void run() {
+        try {
+            ServerSocket clientSocket = new ServerSocket(Server.SERVER_PORT);
+            Socket socket = clientSocket.accept();
+            InputStream fromClient = socket.getInputStream();
+
+            BufferedReader clientReader = new BufferedReader(new InputStreamReader(fromClient));
+            String message = null;
+            while ((message = clientReader.readLine()) != null) {
+                System.out.println(message);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
