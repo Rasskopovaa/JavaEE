@@ -8,6 +8,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
+
 public class Client {
     public static Integer CLIENT_PORT = 4988;
 
@@ -35,5 +36,5 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-}
+
+}    }
