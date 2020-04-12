@@ -1,4 +1,4 @@
-package Lesson10.java7;
+package Lesson10.lambdas.java7;
 
 import java.util.Scanner;
 

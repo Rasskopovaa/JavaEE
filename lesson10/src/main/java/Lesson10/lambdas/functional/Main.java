@@ -1,4 +1,4 @@
-package Lesson10.functional;
+package Lesson10.lambdas.functional;
 
 import java.util.Scanner;
 

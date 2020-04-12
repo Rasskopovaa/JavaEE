@@ -1,8 +1,7 @@
-package Lesson10.psvm;
+package Lesson10.lambdas.psvm;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class Main {
 
