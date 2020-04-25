@@ -1,3 +1,5 @@
+package Course;
+
 import java.util.*;
 
 public class Main {
@@ -26,6 +28,7 @@ createCollectable();
         Map<Object,Object>  localCache =  new HashMap<>();
         for(int i=0;i<MAP_SIZE;i++){
             localCache.put(i,createBigObject());
+
         }
     }
 }
