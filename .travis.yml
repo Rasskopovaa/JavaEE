@@ -1,6 +1,5 @@
 language: java
-sudo: true
-
+sudo: false
 install: true
 
 dist: trusty
@@ -12,14 +11,15 @@ os:
   - linux
 
 branches:
-only:
-  - master
+  only:
+    - master
 
-  script:
-    - ./gradlew assemble
-    - ./gradlew check -- rerun -tasks
+script:
+  - ./gradlew assemble
+  - ./gradlew check -- rerun -tasks
 notifications:
 email:
 recipients:
   - raskopovaa@gmail.com
 on_success: always # default: change
+
