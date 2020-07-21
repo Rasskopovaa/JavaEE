@@ -1,0 +1,25 @@
+language: java
+sudo: true
+
+install: true
+
+dist: trusty
+
+jdk:
+  - oraclejdk8
+
+os:
+  - linux
+
+branches:
+only:
+  - master
+
+  script:
+    - ./gradlew assemble
+    - ./gradlew check -- rerun -tasks
+notifications:
+email:
+recipients:
+  - raskopovaa@gmail.com
+on_success: always # default: change
