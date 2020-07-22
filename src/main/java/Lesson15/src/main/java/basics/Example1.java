@@ -1,4 +1,4 @@
-package basics;
+package Lesson15.src.main.java.basics;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

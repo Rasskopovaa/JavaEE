@@ -1,9 +1,9 @@
-package realExample.dao;
+package Lesson15.src.main.java.realExample.dao;
 
-import realExample.ConnectionManager.ConnctionManagerJdbcImpl;
-import realExample.ConnectionManager.ConnectionManager;
-import realExample.pojo.City;
-import realExample.pojo.Student;
+import Lesson15.src.main.java.realExample.ConnectionManager.ConnctionManagerJdbcImpl;
+import Lesson15.src.main.java.realExample.ConnectionManager.ConnectionManager;
+import Lesson15.src.main.java.realExample.pojo.City;
+import Lesson15.src.main.java.realExample.pojo.Student;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

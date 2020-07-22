@@ -32,3 +32,5 @@ notifications:
     recipients:
       - raskopovaa@gmail.com
     on_success: always # default: change
+
+

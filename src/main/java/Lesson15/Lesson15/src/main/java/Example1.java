@@ -1,3 +1,5 @@
+package Lesson15.Lesson15.src.main.java;
+
 import java.sql.*;
 import static java.sql.DriverManager.getConnection;
 public class Example1 {
@@ -9,9 +11,9 @@ public class Example1 {
             e.printStackTrace();
         }
         try (Connection connection =getConnection("jdbc:postgresql://localhost:5432/students",
-                    "postgres",
-                    "postgres");
-                 Statement statement = connection.createStatement();
+                "postgres",
+                "postgres");
+             Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery("" +
                      "SELECT * FROM students");) {
 

@@ -1,4 +1,4 @@
-package realExample.pojo;
+package Lesson15.src.main.java.realExample.pojo;
 
 public class City {
     private int id;

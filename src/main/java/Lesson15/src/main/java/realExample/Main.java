@@ -1,4 +1,4 @@
-package realExample;
+package Lesson15.src.main.java.realExample;
 
 import realExample.dao.CityDao;
 import realExample.dao.CityDaoImpl;

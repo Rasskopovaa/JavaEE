@@ -1,6 +1,6 @@
-package realExample.dao;
+package Lesson15.src.main.java.realExample.dao;
 
-import realExample.pojo.City;
+import Lesson15.src.main.java.realExample.pojo.City;
 
 public interface CityDao {
 
