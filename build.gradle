@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "org.sonarqube" version "2.6.2"
 }
 
 group 'JavaEE'
@@ -9,6 +10,19 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+}
+
+sonarqube {
+    properties {
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.projectName", "JavaEE"
+        property "sonar.projectKey", "JavaEE"
+        property "sonar.organization", "javaee-raskopova"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.language", "java"
+        property "sonar.login", System.getenv("SONARCLOUD_TOKEN")
+        property "sonar.jacoco.reportPaths", "$rootProject.buildDir/jacoco/alltest.exec"
+    }
 }
 
 allprojects {
@@ -42,8 +56,8 @@ allprojects {
             destinationFile = file("$rootProject.buildDir/jacoco/alltest.exec")
         }
     }
-}
 
+}
 
 task cleanJacoco(dependsOn: 'clean') { delete "$buildDir/jacoco" }
 
@@ -52,6 +66,13 @@ task codeCoverageReport(type: JacocoReport) {
 
     subprojects.each {
         sourceSets it.sourceSets.main
+    }
+
+    reports {
+        xml.enabled = true
+        xml.setDestination(new File("${buildDir}/reports/jacoco/report.xml"))
+        html.setEnabled(true)
+        html.setDestination(new File("${buildDir}/reports/jacoco/report.html"))
     }
 
     dependencies {
