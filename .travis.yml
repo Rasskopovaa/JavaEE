@@ -1,8 +1,5 @@
 language: java
-
-before_install:
-  - chmod +x gradlew
-  -
+sudo: false
 install: true
 
 dist: trusty
@@ -29,7 +26,9 @@ cache:
 
 script:
   - ./gradlew assemble
-  - ./gradlew check -- rerun -tasks
+  - ./gradlew clean build sonarqube -s
+  - rm -rf .scannerwork
+
 notifications:
   email:
     recipients:
