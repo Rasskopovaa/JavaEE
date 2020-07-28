@@ -1,20 +1,20 @@
 package repository.dao;
 
 
-import servlets_pojo.Student;
+import pojo.Student;
 
 import java.util.List;
 
 public interface StudentDao {
-    public boolean addStudent(Student student);
+    boolean addStudent(Student student);
 
-    public Student getStudentById(int id);
+    Student getStudentById(int id);
 
-    public boolean update(Student student);
+    boolean update(Student student);
 
-    public boolean deleteStudentById(int id);
+    boolean deleteStudentById(int id);
 
-    public boolean deleteStudentByName(Student student);
+    boolean deleteStudentByName(Student student);
 
     List<Student> getAllStudents();
 }

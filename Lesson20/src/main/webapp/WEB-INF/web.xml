@@ -8,7 +8,7 @@
 
     <servlet>
         <servlet-name>HelloWorld</servlet-name>
-        <servlet-class>servlet_controllers.HelloServlet</servlet-class>
+        <servlet-class>controllers.HelloServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HelloWorld</servlet-name>
@@ -18,7 +18,7 @@
 
     <servlet>
         <servlet-name>Iterator</servlet-name>
-        <servlet-class>servlet_controllers.IteratorServlet</servlet-class>
+        <servlet-class>controllers.IteratorServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Iterator</servlet-name>
@@ -28,7 +28,7 @@
 
     <servlet>
         <servlet-name>Students</servlet-name>
-        <servlet-class>servlet_controllers.StudentServlet</servlet-class>
+        <servlet-class>controllers.StudentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Students</servlet-name>

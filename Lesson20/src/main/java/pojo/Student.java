@@ -1,9 +1,9 @@
-package servlets_pojo;
+package pojo;
 
 public class Student {
     private int id;
     private String name;
-    private String familyName;
+    private String surname;
     private int age;
     private String contact;
     private int city;
@@ -11,7 +11,7 @@ public class Student {
     public Student(int id, String name, String familyName, int age, String contact, int city) {
         this.id = id;
         this.name = name;
-        this.familyName = familyName;
+        this.surname = familyName;
         this.age = age;
         this.contact = contact;
         this.city = city;
@@ -33,12 +33,12 @@ public class Student {
         this.name = name;
     }
 
-    public String getFamilyName() {
-        return familyName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setFamilyName(String familyName) {
-        this.familyName = familyName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public int getAge() {
@@ -70,7 +70,7 @@ public class Student {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", familyName='" + familyName + '\'' +
+                ", surname='" + surname + '\'' +
                 ", age=" + age +
                 ", contact='" + contact + '\'' +
                 ", city=" + city +

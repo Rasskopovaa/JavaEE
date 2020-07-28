@@ -1,4 +1,4 @@
-<%@ page import="servlets_pojo.Student" %>
+<%@ page import="pojo.Student" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: User
@@ -17,10 +17,8 @@
     List<Student> list = (List<Student>) request.getAttribute("list");
     for (Student student : list) {
 %>
-<%=student.getFamilyName()%> <%=student.getName()%> <%=student.getCity()%><BR>
+<%=student.getSurname()%> <%=student.getName()%> <%=student.getCity()%><BR>
 <%
-    }
-%>
 
 }
 

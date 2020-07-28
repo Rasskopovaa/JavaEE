@@ -1,6 +1,6 @@
 package service;
 
-import servlets_pojo.Student;
+import pojo.Student;
 
 import java.util.List;
 

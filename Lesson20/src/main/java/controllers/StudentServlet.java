@@ -1,8 +1,9 @@
-package servlet_controllers;
+package controllers;
 
-import service.StudentServerImpl;
+
+import pojo.Student;
 import service.StudentService;
-import servlets_pojo.Student;
+import service.StudentServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,13 +18,14 @@ public class StudentServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        studentService = new StudentServerImpl();
+        studentService = new StudentServiceImpl();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Student> list = studentService.getAllStudents();
         req.setAttribute("list", list);
-        req.getRequestDispatcher("/iterator.jsp").forward(req, resp);
+        req.getRequestDispatcher("/students.jsp").forward(req, resp);
+
     }
 }

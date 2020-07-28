@@ -1,24 +1,24 @@
 package service;
 
+import pojo.Student;
 import repository.dao.StudentDao;
 import repository.dao.StudentDaoImpl;
-import servlets_pojo.Student;
 
 import java.util.List;
 
-public class StudentServerImpl implements StudentService {
+public class StudentServiceImpl implements StudentService {
     private StudentDao studentDao;
 
-    public StudentServerImpl() {
+    public StudentServiceImpl() {
         studentDao = new StudentDaoImpl();
     }
 
-    public StudentServerImpl(StudentDao studentDao) {
+    public StudentServiceImpl(StudentDao studentDao) {
         this.studentDao = studentDao;
     }
 
     @Override
     public List<Student> getAllStudents() {
-        return null;
+        return studentDao.getAllStudents();
     }
 }

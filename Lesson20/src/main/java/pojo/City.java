@@ -1,4 +1,4 @@
-package servlets_pojo;
+package pojo;
 
 public class City {
     private int id;

@@ -1,8 +1,8 @@
 package repository.dao;
 
+import pojo.Student;
 import repository.connectionManager.ConnectionManager;
 import repository.connectionManager.ConnectionManagerJdbcImpl;
-import servlets_pojo.Student;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,10 +18,10 @@ public class StudentDaoImpl implements StudentDao {
     public boolean addStudent(Student student) {
         Connection connection = connectionManager.getConnection();
         try (PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO students VALUES (DEFAULT, ?, ?, ?, ?, ?)");
+                "INSERT INTO students_info VALUES (DEFAULT, ?, ?, ?, ?, ?)");
         ) {
             statement.setString(1, student.getName());
-            statement.setString(2, student.getFamilyName());
+            statement.setString(2, student.getSurname());
             statement.setInt(3, student.getAge());
             statement.setString(4, student.getContact());
             statement.setInt(5, student.getCity());
@@ -38,14 +38,14 @@ public class StudentDaoImpl implements StudentDao {
         Connection connection = connectionManager.getConnection();
         Student student = null;
         try (PreparedStatement statement = connection.prepareStatement(
-                "SELECT * from students WHERE id = ?");
+                "SELECT * from students_info WHERE id = ?");
         ) {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     student = new Student(resultSet.getInt("id"),
                             resultSet.getString("name"),
-                            resultSet.getString("family_name"),
+                            resultSet.getString("surname"),
                             resultSet.getInt("age"),
                             resultSet.getString("contact"),
                             resultSet.getInt("city"));
@@ -63,10 +63,10 @@ public class StudentDaoImpl implements StudentDao {
         if (student.getId() != 0) {
             Connection connection = connectionManager.getConnection();
             try (PreparedStatement statement = connection.prepareStatement(
-                    "UPDATE students SET name=?, family_name=?, age=?, contact=?, city=? WHERE id=?");
+                    "UPDATE students_info SET name=?, surname=?, age=?, contact=?, city=? WHERE id=?");
             ) {
                 statement.setString(1, student.getName());
-                statement.setString(2, student.getFamilyName());
+                statement.setString(2, student.getSurname());
                 statement.setInt(3, student.getAge());
                 statement.setString(4, student.getContact());
                 statement.setInt(5, student.getCity());
@@ -87,7 +87,7 @@ public class StudentDaoImpl implements StudentDao {
         Connection connection = connectionManager.getConnection();
         Student student = null;
         try (PreparedStatement statement = connection.prepareStatement(
-                "DELETE FROM students WHERE id=?");
+                "DELETE FROM students_info WHERE id=?");
         ) {
             statement.setInt(1, id);
             statement.execute();
@@ -103,7 +103,7 @@ public class StudentDaoImpl implements StudentDao {
         {
             Connection connection = connectionManager.getConnection();
             try (PreparedStatement statement = connection.prepareStatement(
-                    "delete from students where name = ?");) {
+                    "delete from students_info where name = ?");) {
                 statement.setString(1, student.getName());
                 statement.execute();
 
@@ -120,20 +120,18 @@ public class StudentDaoImpl implements StudentDao {
         Connection connection = connectionManager.getConnection();
         Student student = null;
         try (PreparedStatement statement = connection.prepareStatement(
-                "SELECT * from students");
-        ) {
-            try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    result.add(new Student(resultSet.getInt("id"),
-                            resultSet.getString("name"),
-                            resultSet.getString("family_name"),
-                            resultSet.getInt("age"),
-                            resultSet.getString("contact"),
-                            resultSet.getInt("city")));
-                }
+                "SELECT * from students_info");
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                result.add(new Student(resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("surname"),
+                        resultSet.getInt("age"),
+                        resultSet.getString("contact"),
+                        resultSet.getInt("city")));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.getMessage();
             return null;
         }
         return result;
