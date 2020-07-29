@@ -21,4 +21,11 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> getAllStudents() {
         return studentDao.getAllStudents();
     }
+
+    @Override
+    public boolean addStudent(Student student) {
+        return studentDao.addStudent(student);
+    }
+
+
 }

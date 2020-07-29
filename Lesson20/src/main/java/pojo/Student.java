@@ -8,10 +8,10 @@ public class Student {
     private String contact;
     private int city;
 
-    public Student(int id, String name, String familyName, int age, String contact, int city) {
+    public Student(int id, String name, String surname, int age, String contact, int city) {
         this.id = id;
         this.name = name;
-        this.surname = familyName;
+        this.surname = surname;
         this.age = age;
         this.contact = contact;
         this.city = city;

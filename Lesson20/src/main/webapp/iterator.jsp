@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 25.07.2020
@@ -11,15 +11,13 @@
     <title>Title</title>
 </head>
 <body>
-List
-<Integer> list = (List
-    <Integer>) request.getAttribute("list");
-        for (Integer i : list) {
-        %>
-            <%=i%><BR>
-            <%
-}
-
+<%
+    List<Integer> list = (List<Integer>) request.getAttribute("list");
+    for (Integer i : list) {
+%>
+<%=i%><BR>
+<%
+    }
 %>
 </body>
 </html>

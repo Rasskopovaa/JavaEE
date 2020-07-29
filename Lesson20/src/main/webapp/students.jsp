@@ -17,10 +17,13 @@
     List<Student> list = (List<Student>) request.getAttribute("list");
     for (Student student : list) {
 %>
-<%=student.getSurname()%> <%=student.getName()%> <%=student.getCity()%><BR>
+<%=student.getSurname()%> <%=student.getName()%> <%=student.getAge()%><%=student.getContact()%><%=student.getCity()%>
+<BR>
+
 <%
 
 }
+
 
 %>
 </body>
