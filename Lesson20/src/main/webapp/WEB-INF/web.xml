@@ -35,5 +35,23 @@
         <url-pattern>/students</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>controllers.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Dashboard</servlet-name>
+        <servlet-class>controllers.DashboardController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Dashboard</servlet-name>
+        <url-pattern>/inner/dashboard</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

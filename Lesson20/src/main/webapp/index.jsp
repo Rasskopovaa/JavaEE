@@ -17,24 +17,13 @@
     <a href="/hello"> Hello link </a> <BR>
     <a href="/iterator">Iterator link </a> <BR>
     <a href="/students">Students link </a> <BR><BR>
+    <a href="/login">Students link </a> <BR><BR>
     <form method="post" action="/hello">
         <input type="text" name="testText">
         <input type="submit">
     </form>
-    <h3>New student</h3>
-    <form method="post">
-        <label>Name</label><br>
-        <input name="name"/><br><br>
-        <label>Surname</label><br>
-        <input name="name"/><br><br>
-        <label>Age</label><br>
-        <input name="age" type="number" min="1"/><br><br>
-        <label>City</label><br>
-        <input name="city" type="number" min="1"/><br><br>
-        <label>Contact</label><br>
-        <input name="contact"/><br><br>
-        <input type="submit" value="Save"/>
-    </form>
+
+
 </div>
 </body>
 </html>

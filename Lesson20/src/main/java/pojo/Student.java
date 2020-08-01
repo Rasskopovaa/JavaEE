@@ -17,6 +17,14 @@ public class Student {
         this.city = city;
     }
 
+    public Student(String name, String surname, int age, String contact, int city) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.contact = contact;
+        this.city = city;
+    }
+
     public int getId() {
         return id;
     }

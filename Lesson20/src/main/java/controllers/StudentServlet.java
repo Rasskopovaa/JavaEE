@@ -14,7 +14,7 @@ import java.util.List;
 
 public class StudentServlet extends HttpServlet {
     private StudentService studentService;
-    private Student student;
+
 
     @Override
     public void init() throws ServletException {
@@ -33,18 +33,17 @@ public class StudentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            int id = Integer.parseInt(req.getParameter("id"));
             String name = req.getParameter("name");
             String surname = req.getParameter("surname");
-            String contact = req.getParameter("contact");
             int age = Integer.parseInt(req.getParameter("age"));
+            String contact = req.getParameter("contact");
             int city = Integer.parseInt(req.getParameter("city"));
-            Student student = new Student(id, name, surname, age, contact, city);
-
-            resp.sendRedirect(req.getContextPath() + "/students.jsp");
+            Student student = new Student(name, surname, age, contact, city);
+            studentService.addStudent(student);
+            resp.sendRedirect("/students");
         } catch (Exception ex) {
 
-            getServletContext().getRequestDispatcher("/students.jsp").forward(req, resp);
+            req.getRequestDispatcher("/students.jsp").forward(req, resp);
         }
     }
 

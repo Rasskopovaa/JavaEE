@@ -18,7 +18,7 @@ public class StudentDaoImpl implements StudentDao {
     public boolean addStudent(Student student) {
         Connection connection = connectionManager.getConnection();
         try (PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO students_info VALUES (DEFAULT, ?, ?, ?, ?, ?)");
+                "INSERT INTO students_info VALUES ( ?, ?, ?,DEFAULT, ?, ?)");
         ) {
             statement.setString(1, student.getName());
             statement.setString(2, student.getSurname());
