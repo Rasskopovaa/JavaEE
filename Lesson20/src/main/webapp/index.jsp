@@ -8,22 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Журнал</title>
 </head>
 <body>
-<h1> Заголовок страницы</h1>
-<p> Абзац текста </p>
+<h1> Регистрация пользователя </h1>
 <div>
-    <a href="/hello"> Hello link </a> <BR>
-    <a href="/iterator">Iterator link </a> <BR>
-    <a href="/students">Students link </a> <BR><BR>
-    <a href="/login">Students link </a> <BR><BR>
-    <form method="post" action="/hello">
-        <input type="text" name="testText">
-        <input type="submit">
-    </form>
 
-
+    <a href="/login">Зарегистрироваться</a> <BR><BR>
+    <a href="teacher.jsp"> Войти как учитель</a><BR>
+    <a href="students.jsp"> Войти как ученик</a>
 </div>
 </body>
 </html>

@@ -7,6 +7,8 @@ public class Student {
     private int age;
     private String contact;
     private int city;
+    private int mark;
+    private String subject;
 
     public Student(int id, String name, String surname, int age, String contact, int city) {
         this.id = id;
@@ -17,12 +19,27 @@ public class Student {
         this.city = city;
     }
 
+    public Student(String name, String surname, int mark, String subject) {
+        this.name = name;
+        this.surname = surname;
+        this.mark = mark;
+        this.subject = subject;
+    }
+
     public Student(String name, String surname, int age, String contact, int city) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.contact = contact;
         this.city = city;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public int getId() {
@@ -71,6 +88,14 @@ public class Student {
 
     public void setCity(int city) {
         this.city = city;
+    }
+
+    public int getMark() {
+        return mark;
+    }
+
+    public void setMark(int mark) {
+        this.mark = mark;
     }
 
     @Override
