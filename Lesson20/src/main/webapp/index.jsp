@@ -8,15 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Журнал</title>
+    <title>Регистрация</title>
 </head>
-<body>
-<h1> Регистрация пользователя </h1>
-<div>
-
-    <a href="/login">Зарегистрироваться</a> <BR><BR>
-    <a href="teacher.jsp"> Войти как учитель</a><BR>
-    <a href="students.jsp"> Войти как ученик</a>
-</div>
-</body>
+Выберите действия:<BR>
+<a href="/login">Авторизация</a> <BR>
+<a href="/inner/registration">Зарегистрация</a>
 </html>

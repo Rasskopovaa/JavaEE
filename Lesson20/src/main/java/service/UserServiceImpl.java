@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService {
             return user.getRole();
         }
         return -2;
-    }
 
+    }
     @Override
     public boolean checkAuth(String login, String password) {
         User user;
@@ -38,4 +38,11 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public boolean addUser(User user) {
+        return userDao.addUser(user);
+    }
+    // public static void main(String[] args) {
+    // System.out.println(HashUtil.stringToMD5("1010"));
+    //  }
 }

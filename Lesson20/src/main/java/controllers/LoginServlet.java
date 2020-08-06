@@ -1,5 +1,6 @@
 package controllers;
 
+import repository.dao.UserDao;
 import repository.dao.UserDaoImpl;
 import service.UserService;
 import service.UserServiceImpl;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
     UserService userService;
+    UserDao userDao = new UserDaoImpl();
 
     @Override
     public void init() throws ServletException {
@@ -23,13 +25,11 @@ public class LoginServlet extends HttpServlet {
         if ("logout".equals(req.getParameter("action"))) {
             req.getSession().invalidate();
         }
-
         if (req.getSession().getAttribute("login") != null) {
             resp.sendRedirect("/inner/dashboard");
         } else {
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
         }
-
     }
 
     @Override
@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect("/inner/dashboard");
 
         } else {
-            resp.sendRedirect("/login?action=wrongUser");
+            resp.sendRedirect("/index?action=wrongUser");
         }
 
     }

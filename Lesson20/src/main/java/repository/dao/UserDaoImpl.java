@@ -33,4 +33,21 @@ public class UserDaoImpl implements UserDao {
         }
         return null;
     }
+
+    @Override
+    public boolean addUser(User user) {
+        Connection connection = connectionManager.getConnection();
+        try (PreparedStatement statement = connection.prepareStatement(
+                "INSERT INTO users VALUES ( DEFAULT, ?, ?, ?)");
+        ) {
+            statement.setString(1, (user.getName()));
+            statement.setString(2, (user.getPassword()));
+            statement.setInt(3, user.getRole());
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }

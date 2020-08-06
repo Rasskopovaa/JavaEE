@@ -54,12 +54,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Teacher</servlet-name>
-        <servlet-class>controllers.TeacherServlet</servlet-class>
+        <servlet-name>Registration</servlet-name>
+        <servlet-class>controllers.RegistrationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Teacher</servlet-name>
-        <url-pattern>/teacher</url-pattern>
+        <servlet-name>Registration</servlet-name>
+        <url-pattern>/inner/registration</url-pattern>
     </servlet-mapping>
+
 
 </web-app>
