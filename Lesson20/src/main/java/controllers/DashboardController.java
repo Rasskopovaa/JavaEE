@@ -2,8 +2,7 @@ package controllers;
 
 import pojo.Marks;
 import pojo.Student;
-import repository.dao.UserDao;
-import repository.dao.UserDaoImpl;
+import repository.dao.*;
 import service.MarksService;
 import service.StudentService;
 import service.UserService;
@@ -13,17 +12,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 public class DashboardController extends HttpServlet {
     UserService userService;
+    StudentDao studentDao = new StudentDaoImpl();
     UserDao userDao = new UserDaoImpl();
+    MarksDao marksDao = new MarksDaoImpl();
     private StudentService studentService;
     private MarksService marksService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String role = (String) req.getSession().getAttribute("login");
+        String role = (String) req.getSession().getAttribute("role");
+
+        if (role.equals("teach")) {
+            List<Student> allStudents = studentDao.getAllStudents();
+            req.getSession().setAttribute("studentList", allStudents);
+        }
+
+        List<Marks> allMarks = marksDao.getAllMarks();
+        req.getSession().setAttribute("markList", allMarks);
         req.getRequestDispatcher("/dashboard.jsp").forward(req, resp);
+
 
     }
 

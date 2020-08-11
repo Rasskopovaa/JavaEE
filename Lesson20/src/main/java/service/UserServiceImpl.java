@@ -2,11 +2,15 @@ package service;
 
 import pojo.User;
 import repository.dao.UserDao;
+import repository.dao.UserDaoImpl;
 import service.utils.HashUtil;
 
 public class UserServiceImpl implements UserService {
     UserDao userDao;
 
+    public UserServiceImpl() {
+        userDao = new UserDaoImpl();
+    }
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }

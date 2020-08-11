@@ -37,7 +37,8 @@ public class LoginServlet extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         if (userService.checkAuth(login, password)) {
-            int role = userService.getRole("login");
+            int roleId = userService.getRole("login");
+            String role = roleId == 3 ? "stud" : "teach";
             req.getSession().setAttribute("login", login);
             req.getSession().setAttribute("role", role);
             resp.sendRedirect("/inner/dashboard");

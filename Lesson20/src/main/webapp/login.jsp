@@ -27,11 +27,6 @@
     <input type="text" name="login"><BR>
     Пароль: <BR>
     <input type="password" name="password"><BR><BR>
-    <label>Кем вы являетесь?</label><BR>
-    <select id="roles" name="roles">
-        <option value="teach">Учитель</option>
-        <option value="stud">Ученик</option>
-    </select>
     <input type="submit"><BR>
 </form>
 </body>

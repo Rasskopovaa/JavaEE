@@ -12,5 +12,5 @@
 </head>
 Выберите действия:<BR>
 <a href="/login">Авторизация</a> <BR>
-<a href="/inner/registration">Зарегистрация</a>
+<a href="/inner/registration">Регистрация</a>
 </html>
