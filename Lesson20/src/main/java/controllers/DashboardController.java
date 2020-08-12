@@ -3,9 +3,7 @@ package controllers;
 import pojo.Marks;
 import pojo.Student;
 import repository.dao.*;
-import service.MarksService;
-import service.StudentService;
-import service.UserService;
+import service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,16 +20,24 @@ public class DashboardController extends HttpServlet {
     private StudentService studentService;
     private MarksService marksService;
 
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        marksService = new MarksServiceImpl();
+        studentService = new StudentServiceImpl();
+
+    }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String role = (String) req.getSession().getAttribute("role");
 
         if (role.equals("teach")) {
-            List<Student> allStudents = studentDao.getAllStudents();
+            List<Student> allStudents = studentService.getAllStudents();
             req.getSession().setAttribute("studentList", allStudents);
         }
 
-        List<Marks> allMarks = marksDao.getAllMarks();
+        List<Marks> allMarks = marksService.getAllMarks();
         req.getSession().setAttribute("markList", allMarks);
         req.getRequestDispatcher("/dashboard.jsp").forward(req, resp);
 
@@ -40,7 +46,6 @@ public class DashboardController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         try {
             String name = req.getParameter("name");
             String surname = req.getParameter("surname");
@@ -49,24 +54,22 @@ public class DashboardController extends HttpServlet {
             int city = Integer.parseInt(req.getParameter("city"));
             Student student = new Student(name, surname, age, contact, city);
             studentService.addStudent(student);
-            resp.sendRedirect("/inner/dashboard");
-        } catch (Exception ex) {
 
+        } catch (NumberFormatException ex) {
             req.getRequestDispatcher("/dashboard.jsp").forward(req, resp);
-
         }
         try {
-            int id = Integer.parseInt(req.getParameter("id"));
+            String nameStud = req.getParameter("nameStud");
+            String surnameStud = req.getParameter("surnameStud");
             String subject = req.getParameter("subject");
             int marks = Integer.parseInt(req.getParameter("marks"));
-            Marks mark = new Marks(id, subject, marks);
+            Marks mark = new Marks(nameStud, surnameStud, subject, marks);
             marksService.addMarks(mark);
             resp.sendRedirect("/inner/dashboard");
-        } catch (Exception ex) {
-
+        } catch (NumberFormatException ex) {
             req.getRequestDispatcher("/dashboard.jsp").forward(req, resp);
-
-
         }
+
+
     }
 }

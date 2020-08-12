@@ -1,7 +1,6 @@
 package repository.dao;
 
 import pojo.Marks;
-import pojo.Student;
 import repository.connectionManager.ConnectionManager;
 import repository.connectionManager.ConnectionManagerJdbcImpl;
 
@@ -17,16 +16,14 @@ public class MarksDaoImpl implements MarksDao {
 
     @Override
     public boolean addMark(Marks mark) {
-
-        Student student = null;
         Connection connection = connectionManager.getConnection();
         try (PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO marks_info VALUES ( ?, ?, ?, ?, DEFAULT )");
+                "INSERT INTO marks VALUES ( ?, ?, ?, ?,DEFAULT )");
         ) {
-            statement.setString(1, student.getName());
-            statement.setString(2, student.getSurname());
-            statement.setInt(5, student.getMark());
-            statement.setString(1, student.getSubject());
+            statement.setString(1, mark.getNameStud());
+            statement.setString(2, mark.getSurnameStud());
+            statement.setInt(3, mark.getMarks());
+            statement.setString(4, mark.getSubject());
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,7 +43,8 @@ public class MarksDaoImpl implements MarksDao {
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 result.add(new Marks(
-                        resultSet.getInt("id_stud"),
+                        resultSet.getString("nameStud"),
+                        resultSet.getString("surnameStud"),
                         resultSet.getString("subject"),
                         resultSet.getInt("marks")
                 ));

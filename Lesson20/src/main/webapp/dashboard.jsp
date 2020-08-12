@@ -15,7 +15,7 @@
 <body>
 Вы вошли как <%=request.getSession().getAttribute("login")%>
 
-<% if (request.getSession().getAttribute("role").equals("teach")) {
+<% if (request.getSession().getAttribute("role").equals(3)) {
 
 %>
 <h3> Добавить ученика </h3>
@@ -36,15 +36,15 @@
 
 <h3> Добавить оценку </h3>
 
-<form method="post" id="second">
+<form method="post" name="secondForm" id="second">
     <label>Name</label><br>
-    <input name="name"/><br><br>
+    <input name="nameStud"/><br><br>
     <label>Surname</label><br>
-    <input name="surname"/><br><br>
+    <input name="surnameStud"/><br><br>
     <label>Subject</label><br>
     <input name="subject"><br><br>
     <label>Mark</label><br>
-    <input name="mark" type="number" min="1"/><br><br>
+    <input name="marks" type="number" min="1"/><br><br>
     <input type="submit" value="Save"/>
 </form>
 
@@ -54,7 +54,8 @@
     List<Student> list = (List<Student>) request.getSession().getAttribute("studentList");
     for (Student student : list) {
 %>
-<%=student.getSurname()%> <%=student.getName()%><%=student.getAge()%><%=student.getContact()%> <%=student.getCity()%>
+<%=student.getSurname()%> / <%=student.getName()%> / <%=student.getAge()%> / <%=student.getContact()%>
+/ <%=student.getCity()%>
 <BR>
 <%
     }
@@ -62,12 +63,13 @@
 <%
     }
 %>
-<div> Список оценок:</div>
+
+<h3> Список оценок:</h3>
 <%
     List<Marks> listMarks = (List<Marks>) request.getSession().getAttribute("markList");
     for (Marks marks : listMarks) {
 %>
-<%=marks.getId()%> <%=marks.getSubject()%><%=marks.getMarks()%>
+<%=marks.getNameStud()%> /  <%=marks.getSurnameStud()%>  / <%=marks.getSubject()%> / <%=marks.getMarks()%>
 <BR>
 <% }
 %>
