@@ -14,6 +14,7 @@
 </head>
 <body>
 Вы вошли как <%=request.getSession().getAttribute("login")%>
+<a href="/login?action=logout"> Выйти </a>
 
 <% if (request.getSession().getAttribute("role").equals(3)) {
 
