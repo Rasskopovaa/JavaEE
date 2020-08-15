@@ -27,9 +27,9 @@
 <div id="avt-form">
 
     <form action="/login" method="post">
-        <h4 style=" font-family: 'Agency FB'; color: #000000" class="text">Логин:</h4>
+        <div style=" font-family: 'Agency FB'; color: #000000" class="text">Логин:</div>
         <input type="text" name="login"><BR>
-        <h4 style=" font-family: 'Agency FB'; color: #000000" class="text">Пароль:</h4>
+        <div style=" font-family: 'Agency FB'; color: #000000" class="text">Пароль:</div>
         <input type="password" name="password"><BR><BR>
         <input type="submit"><BR>
 
