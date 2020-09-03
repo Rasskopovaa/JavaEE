@@ -19,5 +19,4 @@ include 'Lesson19'
 include 'Lesson20'
 include 'Lesson21'
 include 'Lesson20:Calc'
-findProject(':Lesson20:Calc')?.name = 'Calculator'
 
