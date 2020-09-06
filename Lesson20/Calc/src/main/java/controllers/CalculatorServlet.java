@@ -1,5 +1,9 @@
 package controllers;
 
+import pojo.Calculator;
+import service.CalculatorService;
+import service.CalculatorServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,13 +12,19 @@ import java.io.IOException;
 
 
 public class CalculatorServlet extends HttpServlet {
+    private CalculatorService calculatorService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        calculatorService = new CalculatorServiceImpl();
+    }
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer result = 0;
-        Double result2 = 0.0;
-        Integer number1 = Integer.valueOf(req.getParameter("first"));
-        Integer number2 = Integer.valueOf(req.getParameter("second"));
+        double result = 0;
+        double number1 = Double.parseDouble(req.getParameter("first"));
+        double number2 = Double.parseDouble(req.getParameter("second"));
         String sign = req.getParameter("sign");
 
         if (sign.equals("+")) {
@@ -24,14 +34,21 @@ public class CalculatorServlet extends HttpServlet {
         } else if (sign.equals("*")) {
             result = number1 * number2;
         } else if (sign.equals("/")) {
-            result2 = (double) number1 / (double) number2;
+            result = number1 / number2;
         }
         resp.getWriter().write(String.valueOf(result));
         req.setAttribute("result", result);
-        if (sign.equals("/")) {
-            req.setAttribute("result", result2);
-        }
+
         req.getRequestDispatcher("index.jsp").forward(req, resp);
+
+        try {
+            Calculator calculator = new Calculator(number1, number2, sign, result);
+            calculatorService.addResult(calculator);
+
+        } catch (Exception ex) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+
+        }
 
 
     }
