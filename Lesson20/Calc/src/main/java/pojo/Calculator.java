@@ -1,6 +1,9 @@
 package pojo;
 
-public class Calculator {
+import java.io.Serializable;
+
+public class Calculator implements Serializable {
+    private int id;
     private double number1;
     private double number2;
     private String sign;
@@ -11,6 +14,22 @@ public class Calculator {
         this.number2 = number2;
         this.sign = sign;
         this.result = result;
+    }
+
+    public Calculator(int id, double number1, double number2, String sign, double result) {
+        this.id = id;
+        this.number1 = number1;
+        this.number2 = number2;
+        this.sign = sign;
+        this.result = result;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getNumber2() {

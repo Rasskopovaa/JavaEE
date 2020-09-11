@@ -13,13 +13,15 @@ public class CalculatorServiceImpl implements CalculatorService {
         calculatorDao = new CalculatorDaoImpl();
     }
 
+    public CalculatorServiceImpl(CalculatorDao calculatorDao) {
+        this.calculatorDao = calculatorDao;
+    }
 
     @Override
-    public List<Calculator> getAllResults() {
+    public List<Calculator> getAllResults()
         {
             return calculatorDao.getAllResults();
         }
-    }
 
     @Override
     public boolean addResult(Calculator calculator) {

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="pojo.Calculator" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 01.09.2020
@@ -28,7 +29,19 @@
     <input type="submit" value="=" oninput="result"><BR><BR>
     <output name="result">Result: ${result} </output>
 
+    <form id="list">
+        <button>M</button>
+    </form>
+
 </form>
 
+<%
+    List<Calculator> list = (List<Calculator>) request.getSession().getAttribute("calcList");
+    for (Calculator calculator : list) {
+%>
+<%=calculator.getNumber1()%>   <%=calculator.getSign()%>   <%=calculator.getNumber2()%>  <%=calculator.getResult()%>
+<%
+    }
+%>
 </body>
 </html>

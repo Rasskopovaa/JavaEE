@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
 public class CalculatorServlet extends HttpServlet {
@@ -19,6 +20,16 @@ public class CalculatorServlet extends HttpServlet {
         super.init();
         calculatorService = new CalculatorServiceImpl();
     }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Calculator> list = calculatorService.getAllResults();
+        req.getSession().setAttribute("calcList", list);
+
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+
+    }
+
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

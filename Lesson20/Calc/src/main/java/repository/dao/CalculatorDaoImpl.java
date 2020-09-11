@@ -15,28 +15,6 @@ public class CalculatorDaoImpl implements CalculatorDao {
     private static ConnectionManager connectionManager = ConnectionManagerJdbcImpl.getInstance();
 
     @Override
-    public List<Calculator> getAllResults() {
-        List<Calculator> result = new ArrayList<>();
-        Connection connection = connectionManager.getConnection();
-        Calculator calculator = null;
-        try (PreparedStatement statement = connection.prepareStatement(
-                "SELECT * from calculator");
-             ResultSet resultSet = statement.executeQuery()) {
-            while (resultSet.next()) {
-                result.add(new Calculator(resultSet.getDouble("number1"),
-                        resultSet.getDouble("number2"),
-                        resultSet.getString("sign"),
-                        resultSet.getDouble("result")));
-            }
-        } catch (SQLException e) {
-            e.getMessage();
-            return null;
-        }
-        return result;
-    }
-
-
-    @Override
     public boolean addResult(Calculator calculator) {
         Connection connection = connectionManager.getConnection();
         try (PreparedStatement statement = connection.prepareStatement(
@@ -52,5 +30,29 @@ public class CalculatorDaoImpl implements CalculatorDao {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public List<Calculator> getAllResults() {
+        List<Calculator> result = new ArrayList<>();
+
+        Connection connection = connectionManager.getConnection();
+        try (PreparedStatement statement = connection.prepareStatement(
+                "SELECT * from calculator");
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                result.add(new Calculator(
+                        resultSet.getInt("id"),
+                        resultSet.getDouble("number1"),
+                        resultSet.getDouble("number2"),
+                        resultSet.getString("sign"),
+                        resultSet.getDouble("result")
+                ));
+            }
+        } catch (SQLException e) {
+            e.getMessage();
+            return null;
+        }
+        return result;
     }
 }
