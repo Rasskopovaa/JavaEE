@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,12 +23,15 @@ public class CalculatorServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Calculator> list = calculatorService.getAllResults();
-        req.getSession().setAttribute("calcList", list);
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String sign = req.getParameter("sign");
 
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        List<Calculator> list = new ArrayList<>();
 
+        list = calculatorService.getAllResults();
+        req.getSession().setAttribute("list", list);
+
+        req.getRequestDispatcher("/calc.jsp").forward(req, resp);
     }
 
 
@@ -50,16 +54,13 @@ public class CalculatorServlet extends HttpServlet {
         resp.getWriter().write(String.valueOf(result));
         req.setAttribute("result", result);
 
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
+        Calculator calculator = new Calculator(number1, number2, sign, result);
+        calculatorService.addResult(calculator);
 
-        try {
-            Calculator calculator = new Calculator(number1, number2, sign, result);
-            calculatorService.addResult(calculator);
+        req.getRequestDispatcher("calc.jsp").forward(req, resp);
 
-        } catch (Exception ex) {
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
 
-        }
+
 
 
     }

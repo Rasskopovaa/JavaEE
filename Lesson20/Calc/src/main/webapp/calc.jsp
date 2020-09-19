@@ -1,4 +1,5 @@
 <%@ page import="pojo.Calculator" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: User
@@ -9,14 +10,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+
 <html>
 <head>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href=" ${pageContext.request.contextPath} /css/style.css" type="text/css"/>
     <title>The best calculator ever</title>
 </head>
 <body>
-
-<form id="calculator" method="post" action="/calc">
+<div id="calculator">
+    <form method="post" action="/calc">
 
     <input type="number" autocomplete=off name="first" id="first" value="${fn:escapeXml(param.first)}"> <BR><BR>
     <input type="number" autocomplete=off name="second" id="second" value="${fn:escapeXml(param.second)}"><BR><BR>
@@ -25,23 +29,29 @@
         <option value="-" ${param.sign == '-' ? 'selected' : ''}>-</option>
         <option value="*" ${param.sign == '*' ? 'selected' : ''}>*</option>
         <option value="/" ${param.sign == '/' ? 'selected' : ''}>/</option>
+        <option value="M" ${param.sign == 'M' ? 'selected' : ''}>M</option>
     </select>
     <input type="submit" value="=" oninput="result"><BR><BR>
-    <output name="result">Result: ${result} </output>
+        <output name="result">Result: ${result} </output>
+        <BR><BR>
 
-    <form id="list">
-        <button>M</button>
-    </form>
+            <% List<Calculator> list = new ArrayList<>();
+            list = (List<Calculator>) request.getSession().getAttribute("list");
+            for (Calculator calculator : list) {
+        %>
+            <%=calculator.getNumber1()%>
+            <%=calculator.getSign()%>
+            <%=calculator.getNumber2()%> = <%=calculator.getResult()%> <BR>
 
+            <%
+            }
+        %>
+
+
+</div>
 </form>
 
-<%
-    List<Calculator> list = (List<Calculator>) request.getSession().getAttribute("calcList");
-    for (Calculator calculator : list) {
-%>
-<%=calculator.getNumber1()%>   <%=calculator.getSign()%>   <%=calculator.getNumber2()%>  <%=calculator.getResult()%>
-<%
-    }
-%>
+</form>
+</div>
 </body>
 </html>
