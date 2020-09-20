@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="downloader" class="ioc.FileDownloader"/>
+    <bean id="uploader" class="ioc.FileUploader"/>
+
+    <bean id="dataHandler" class="ioc.DataHandler" autowire="byName">
+        <!--        <property name="downloader" ref="downloader" />
+          <property name="uploader" ref="uploader" />-->
+    </bean>
+</beans>
