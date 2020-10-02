@@ -34,11 +34,28 @@ public class StudentController {
         studentService.addStudent(studentName, studentFamilyName, studentAge, studentGroup);
         return "addStudent";
     }
-
     @RequestMapping(value = "/addStudent", method = RequestMethod.GET)
     public String showAddStudent(Model model) {
         return "addStudent";
     }
+
+
+    @RequestMapping(value = "/adminpage", method = RequestMethod.GET)
+    public String showAdminPage(Model model) {
+        return "adminpage";
+    }
+
+
+    @RequestMapping(value = "/userpage", method = RequestMethod.GET)
+    public String showUserPage(Model model) {
+        return "userpage";
+    }
+
+    @RequestMapping(value = "/logoutpage", method = RequestMethod.GET)
+    public String showAnyUserPage(Model model) {
+        return "anyuserpage";
+    }
+
 
 
 }

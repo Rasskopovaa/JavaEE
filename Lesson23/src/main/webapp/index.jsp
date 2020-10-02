@@ -11,7 +11,11 @@
     <title>$Title$</title>
 </head>
 <body>
-<a href="/studentList">Hello</a>
-<a href="addStudent">AddStudent</a>
+<a href="/studentList">Hello</a> <BR>
+<a href="addStudent">AddStudent</a><BR>
+<a href="/userpage">User Page</a><BR>
+<a href="/adminpage">Admin Page</a><BR>
+<a href="/logoutpage">Log out Page</a><BR>
+
 </body>
 </html>
