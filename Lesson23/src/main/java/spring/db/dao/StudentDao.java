@@ -10,4 +10,10 @@ public interface StudentDao {
 
     void addStudent(Student student);
 
+    Student getStudent(Integer id);
+
+    void deleteStudent(Integer id);
+
+    void update(Integer id, Integer age, String name, String familyName);
+
 }

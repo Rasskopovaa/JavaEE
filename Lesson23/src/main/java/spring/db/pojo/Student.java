@@ -22,6 +22,8 @@ public class Student {
         this.group = group;
     }
 
+    public Student() {
+    }
 
     public Integer getId() {
         return id;

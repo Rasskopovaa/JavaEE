@@ -63,7 +63,7 @@ public class StudentDaoImpl implements StudentDao {
         if (student.getId() != 0) {
             Connection connection = connectionManager.getConnection();
             try (PreparedStatement statement = connection.prepareStatement(
-                    "UPDATE students_info SET name=?, surname=?, age=?, contact=?, city=? WHERE id=?");
+                    "UPDATE students_info SET name=?, familyName=?, age=?, contact=?, city=? WHERE id=?");
             ) {
                 statement.setString(1, student.getName());
                 statement.setString(2, student.getSurname());
