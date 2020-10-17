@@ -17,7 +17,7 @@
         <TR>
             <TD>${student.id}</TD>
             <TD>${student.name}</TD>
-            <TD>${student.familyName}</TD>
+            <TD>${student.surname}</TD>
             <TD>${student.age}</TD>
             <TD>${student.group}</TD>
         </TR>

@@ -13,7 +13,7 @@
 <body>
 <form action="/addStudentUrl" method="post">
     <input type="text" name="studentName" placeholder="name"><br/>
-    <input type="text" name="studentFamilyName" placeholder="familyName"><br/>
+    <input type="text" name="studentFamilyName" placeholder="surname"><br/>
     <input type="text" name="studentAge" placeholder="age"><br/>
     <input type="text" name="studentGroup" placeholder="group"><br/>
     <input type="submit">
